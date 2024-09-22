@@ -3,8 +3,14 @@ import fetch from "node-fetch";
 import urlModule from "url";
 import cliProgress from "cli-progress";
 
-const LANGCHAIN_DOCS_HOME = "https://js.langchain.com/v0.2/docs/introduction/";
-const LANGCHAIN_DOCS_PREFIX = "/v0.2/docs";
+// Note: Full Langchain document take a very long time to download. A short document is provided for the course.
+const LANGCHAIN_DOCS_HOME =
+  "https://github.com/learn-with-amit/genai-js/blob/main/docs/langchain.md";
+
+// const LANGCHAIN_DOCS_HOME =
+//   "https://js.langchain.com/docs/introduction";
+
+const LANGCHAIN_DOCS_PREFIX = "/docs/";
 
 const progressBar = new cliProgress.SingleBar({
   format: "Documents Crawled: {value}",
