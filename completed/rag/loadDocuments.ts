@@ -1,6 +1,6 @@
 import { Document } from "@langchain/core/documents";
 import { crawlLangchainDocsUrls } from "./crawlDocuments";
-import { CheerioWebBaseLoader } from "langchain/document_loaders/web/cheerio";
+import { CheerioWebBaseLoader } from "@langchain/community/document_loaders/web/cheerio";
 import cliProgress from "cli-progress";
 
 const progressBar = new cliProgress.SingleBar({});
