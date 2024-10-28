@@ -4,7 +4,8 @@ import dotenv from "dotenv";
 import { StringOutputParser } from "@langchain/core/output_parsers";
 import { LLMChain } from "langchain/chains";
 import { RunnableSequence } from "@langchain/core/runnables";
-import { Bedrock } from "@langchain/community/llms/bedrock/web";
+import * as bedrock from "@langchain/aws";
+import * as claude from "@langchain/anthropic";
 
 dotenv.config();
 
@@ -29,12 +30,33 @@ async function personalisedPitch(
 
   console.log("Formatted Prompt: ", formattedPrompt);
 
-  const llm = new OpenAI({
-    // temperature: 1,
-    // topP: 1,
+  // OpenAI LLM
+  // const llm = new OpenAI({
+  //   // temperature: 1,
+  //   // topP: 1,
+  //   maxTokens: 150,
+  //   model: "gpt-3.5-turbo",
+  // });
+
+  // Anthropic Claude LLM
+  const llm = new claude.ChatAnthropic({
     maxTokens: 150,
-    model: "gpt-3.5-turbo",
+    model: "claude-3-5-sonnet-20240620",
+    temperature: 0.7,
   });
+
+  // AWS Bedrock LLM
+  // const llm = new bedrock.ChatBedrockConverse({
+  //   // model: "amazon.titan-text-lite-v1",
+  //   model: "meta.llama3-70b-instruct-v1:0",
+  //   maxTokens: 150,
+  //   topP: 0.7,
+  //   region: "us-east-1",
+  //   credentials: {
+  //     accessKeyId: process.env.AWS_ACESS_KEY_ID!,
+  //     secretAccessKey: process.env.AWS_ACCESS_KEY_SECRET!,
+  //   },
+  // });
 
   const outputParser = new StringOutputParser();
 
