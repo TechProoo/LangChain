@@ -31,19 +31,19 @@ async function personalisedPitch(
   console.log("Formatted Prompt: ", formattedPrompt);
 
   // OpenAI LLM
-  // const llm = new OpenAI({
-  //   // temperature: 1,
-  //   // topP: 1,
-  //   maxTokens: 150,
-  //   model: "gpt-3.5-turbo",
-  // });
+  const llm = new OpenAI({
+    // temperature: 1,
+    // topP: 1,
+    maxTokens: 150,
+    model: "gpt-3.5-turbo",
+  });
 
   // Anthropic Claude LLM
-  const llm = new claude.ChatAnthropic({
-    maxTokens: 150,
-    model: "claude-3-5-sonnet-20240620",
-    temperature: 0.7,
-  });
+  // const llm = new claude.ChatAnthropic({
+  //   maxTokens: 150,
+  //   model: "claude-3-5-sonnet-20240620",
+  //   temperature: 0.7,
+  // });
 
   // AWS Bedrock LLM
   // const llm = new bedrock.ChatBedrockConverse({
