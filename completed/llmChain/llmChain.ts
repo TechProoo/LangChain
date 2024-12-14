@@ -1,5 +1,5 @@
 import { PromptTemplate } from "@langchain/core/prompts";
-import { OpenAI } from "@langchain/openai";
+import { ChatOpenAI } from "@langchain/openai";
 import dotenv from "dotenv";
 import { StringOutputParser } from "@langchain/core/output_parsers";
 import { LLMChain } from "langchain/chains";
@@ -31,7 +31,7 @@ async function personalisedPitch(
   console.log("Formatted Prompt: ", formattedPrompt);
 
   // OpenAI LLM
-  const llm = new OpenAI({
+  const llm = new ChatOpenAI({
     // temperature: 1,
     // topP: 1,
     maxTokens: 150,
