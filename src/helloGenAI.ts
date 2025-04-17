@@ -1,16 +1,13 @@
 import dotenv from "dotenv";
-import { ChatGroq } from "@langchain/groq";
+import { HuggingFaceInference } from "@langchain/community/llms/hf";
 
 dotenv.config();
 
+const llm = new HuggingFaceInference({
+  model: "google/flan-t5-large",
+  apiKey: process.env.HUGGINGFACEHUB_API_KEY,
+});
 
-const llm = new ChatGroq ({
-  model: "llama-3.3-70b-versatile",
-})
+const response = await llm.invoke("What is food");
 
-const response = await llm.invoke(
- "Describe the importance of learning generative AI for javascript developers in 50 words"
-
-)
-
-console.log(response)
+console.log(response);

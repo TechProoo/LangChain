@@ -1,11 +1,15 @@
-import dotenv from "dotenv";
-import { OpenAIEmbeddings } from "@langchain/openai";
+import { HfInference } from "@huggingface/inference";
 
-dotenv.config();
-const embeddingsLLM = new OpenAIEmbeddings();
+const hf = new HfInference("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");
 
-const embeddings = await embeddingsLLM.embedQuery("What is vector embedding?");
+async function getEmbeddings() {
+  const response = await hf.featureExtraction({
+    model: "sentence-transformers/all-MiniLM-L6-v2",
+    inputs: "What is vector embedding?",
+  });
 
-console.log(embeddings);
+  console.log(response);
+  console.log(response.length);
+}
 
-console.log("Array Length: ", embeddings.length);
+getEmbeddings();
